@@ -1,4 +1,4 @@
-' INTERACT_RISE ' is a CRM created by java in the web platform.
+' INTERACT_RISE ' is a CRM created by java in the WEB platform.
 its my first project for my resume!
 the main features of this web application is:
 
@@ -17,3 +17,8 @@ this web application actually save the passwords without saving them in DB ! it 
 5-->WEB PLATFORM;
 INTERACT_RISE designed for web platform and every devices can use that!
 ***********
+
+technologies:
+* JAVA-SPRING BOOT-HIBERNATE-HTML-MYSQL-MAVEN-THYMELAEF *
+
+architecture: MVC !
