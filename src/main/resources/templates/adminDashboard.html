@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN-DASHBOARD</title>
+</head>
+<body>
+        <hr>
+        <h1>fetch data:</h1>
+        <hr>
+        <form th:action="@{/showAllCustomers}" th:object="${customer}">
+                <button type="submit" >Show All Customers</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>ORDER</th>
+                                <th>NUMBER</th>
+                        </tr>
+                        <tr th:each="admin : ${customer}">
+                                <td th:text="${admin.getName()}">NAME</td>
+                                <td th:text="${admin.getEmail()}">EMAIL</td>
+                                <td th:text="${admin.getOrders()}">ORDER</td>
+                                <td th:text="${admin.getNumber()}">NUMBER</td>
+                        </tr>
+                </table>
+        </form>
+
+        <form th:action="@{/showCustomerById}" th:object="${customerId}">
+                <input type="number" name="id" placeholder="id" field="*{id}">
+                <button type="submit" >Show Customer By ID</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>ORDER</th>
+                                <th>NUMBER</th>
+                        </tr>
+                        <tr th:each="admin : ${customerId}">
+                                <td th:text="${admin.getName()}">NAME</td>
+                                <td th:text="${admin.getEmail()}">EMAIL</td>
+                                <td th:text="${admin.getOrders()}">ORDER</td>
+                                <td th:text="${admin.getNumber()}">NUMBER</td>
+                        </tr>
+                </table>
+        </form>
+
+
+        <form th:action="@{showAllAdmins}" method="post" th:object="${showalladmins}">
+        <button type="submit" name="showAllAdmins">Show All Admins</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <th>LEVEL</th>
+
+                        </tr>
+                        <tr th:each="admin : ${showalladmins}">
+                                <td th:text="${admin.getName()}">NAME</td>
+                                <td th:text="${admin.getLevel()}">LEVEL</td>
+
+                        </tr>
+                </table>
+        </form>
+
+
+        <form th:action="@{showAdminById}" method="post" th:object="${showadminbyid}">
+                <input type="number" name="id" placeholder="id" field="*{id}">
+        <button type="submit" name="showAdminById">Show Admin By ID</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <br>
+                                <th>LEVEL</th>
+                        </tr>
+                        <tr th:each="admin : ${showadminbyid}">
+                                <td th:text="${admin.getName()}">NAME</td>
+                                <td th:text="${admin.getLevel()}">LEVEL</td>
+                        </tr>
+                </table>
+        </form>
+
+
+        <form th:action="@{/showAdminByName}" th:object="${support}">
+                <input type="text" name="name" placeholder="level" field="*{name}">
+            <button type="submit">Show Admin By Name</button>
+                <table>
+                       <tr>
+                               <th>NAME</th>
+                               <br>
+                               <th>LEVEL</th>
+                       </tr>
+                        <tr th:each="admin : ${support}">
+                                <td th:text="${admin.getName()}">NAME</td>
+                                <td th:text="${admin.getLevel()}">LEVEL</td>
+                        </tr>
+                </table>
+        </form>
+
+        <form th:action="@{showAllOrders}" method="post" th:object="${showallorders}">
+        <button type="submit" name="showAllOrders">Show All Orders</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <br>
+                                <th>ORDER_ID</th>
+                        </tr>
+                        <tr th:each="order : ${showallorders}">
+                                <td th:text="${order.getName()}">NAME</td>
+                                <td th:text="${order.getOrder_id()}">ORDER_ID</td>
+                        </tr>
+                </table>
+        </form>
+
+        <form th:action="@{showOrderById}" method="post" th:object="${showorderbyid}">
+                <input type="number" name="id" placeholder="order_id" field="*{order_id}">
+        <button type="submit" name="showOrderById">Show Order By ID</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <br>
+                        </tr>
+                        <tr th:each="order : ${showorderbyid}">
+                                <td th:text="${order.getName()}">NAME</td>
+                        </tr>
+                </table>
+        </form>
+
+
+        <form th:action="@{showAllProducts}" method="post" th:object="${showallproducts}">
+        <button type="submit" name="showAllProducts">Show All Products</button>
+                <table>
+                        <tr>
+                                <th>NAME</th>
+                                <br>
+                        </tr>
+                        <tr th:each="product : ${showallproducts}">
+                                <td th:text="${product.getName()}">NAME</td>
+                        </tr>
+                </table>
+        </form>
+
+        <hr>
+        <h1>actions:</h1>
+        <hr>
+
+
+        <form th:action="@{addCustomer}" method="post" th:object="${addcustomer}">
+                <input type="text" name="name" placeholder="username" field="*{name}">
+                <input type="password" name="password" placeholder="password" field="*{password}">
+                <input type="email" name="email" placeholder="email" field="*{email}">
+                <input type="number" name="number" placeholder="number" field="*{number}">
+                <input type="text" name="orders" placeholder="order" field="*{orders}">
+                <input type="text" name="order_description" placeholder="order description" field="*{order_description}">
+                <button type="submit" name="addCustomer">Add customer</button>
+        </form>
+
+
+        <form th:action="@{deleteCustomerByOrderId}" method="post" th:object="${deletecustomerbyorderid}">
+                <input type="number" name="order_id" placeholder="order_id" field="*{order_id}">
+        <button type="submit" name="deleteCustomer">Delete customer By Order ID</button>
+        </form>
+
+
+        <form th:action="@{deleteCustomerById}" method="post" th:object="${deletecustomerbyid}">
+                <input type="number" name="id" placeholder="id" field="*{id}">
+                <button type="submit" name="deleteCustomer">Delete customer By ID</button>
+        </form>
+
+
+        <form th:action="@{editCustomer}" method="post" th:object="${editcustomer}">
+                <input type="number" name="id" placeholder="customer id" field="*{id}">
+                <input type="text" name="name" placeholder="customer name" field="*{name}">
+                <input type="text" name="password" placeholder="customer password" field="*{password}">
+                <input type="email" name="email" placeholder="customer email" field="*{email}">
+                <input type="number" name="number" placeholder="customer number" field="*{number}">
+                <input type="text" name="orders" placeholder="customer order" field="*{orders}">
+        <button type="submit" name="editCustomer">Edit customer</button>
+        </form>
+
+
+        <form th:action="@{deleteProductById}" method="post" th:object="${deleteproductbyid}">
+                <input type="number" name="order_id" placeholder="order id" field="*{order_id}">
+        <button type="submit" name="deleteProduct">Delete product By ID</button>
+        </form>
+
+
+        <form th:action="@{editProductById}" method="post" th:object="${editproduct}">
+                <input type="number" name="order_id" placeholder="product id" field="*{order_id}">
+                <input type="text" name="name" placeholder="product name" field="*{name}">
+        <button type="submit" name="editProduct">Edit product</button>
+        </form>
+
+
+        <form th:action="@{addAdmin}" method="post" th:object="${addadmin}">
+                <input type="text" name="name" placeholder="username" field="*{name}">
+                <input type="password" name="password" placeholder="password" field="*{password}">
+                <input type="email" name="email" placeholder="email" field="*{email}">
+                <input type="text" name="level" placeholder="level" field="*{level}">
+        <button type="submit" name="addAdmin">Add admin</button>
+        </form>
+
+
+        <form th:action="@{deleteAdminById}" method="post" th:object="${deleteadmin}">
+                <input type="number" name="id" placeholder="admin id" field="*{id}">
+        <button type="submit" name="deleteAdmin">delete admin</button>
+        </form>
+
+
+        <form th:action="@{editAdminById}" method="post" th:object="${editadmin}">
+                <input type="number" name="id" placeholder="admin id" field="*{id}">
+                <input type="text" name="name" placeholder="admin name" field="*{name}">
+                <input type="text" name="password" placeholder="admin password" field="*{password}">
+                <input type="email" name="email" placeholder="admin email" field="*{email}">
+                <input type="text" name="level" placeholder="admin level" field="*{level}">
+        <button type="submit" name="editAdmin">Edit Admin</button>
+        </form>
+
+
+</body>
+</html>

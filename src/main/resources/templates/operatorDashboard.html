@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OPERATOR-DASHBOARD</title>
+</head>
+<body>
+<hr>
+<h1>fetch data:</h1>
+<hr>
+<form th:action="@{/operator/showAllCustomers}" th:object="${customer}">
+    <button type="submit" >Show All Customers</button>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>ORDER</th>
+            <th>NUMBER</th>
+        </tr>
+        <tr th:each="admin : ${customer}">
+            <td th:text="${admin.getName()}">NAME</td>
+            <td th:text="${admin.getEmail()}">EMAIL</td>
+            <td th:text="${admin.getOrders()}">ORDER</td>
+            <td th:text="${admin.getNumber()}">NUMBER</td>
+        </tr>
+    </table>
+</form>
+
+
+<form th:action="@{/operator/showCustomerById}" th:object="${customerId}">
+    <input type="number" name="id" placeholder="id" field="*{id}">
+    <button type="submit" >Show Customer By ID</button>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>ORDER</th>
+            <th>NUMBER</th>
+        </tr>
+        <tr th:each="admin : ${customerId}">
+            <td th:text="${admin.getName()}">NAME</td>
+            <td th:text="${admin.getEmail()}">EMAIL</td>
+            <td th:text="${admin.getOrders()}">ORDER</td>
+            <td th:text="${admin.getNumber()}">NUMBER</td>
+        </tr>
+    </table>
+</form>
+
+<form th:action="@{/operator/showAllOrders}" method="post" th:object="${showallorders}">
+    <button type="submit" name="showAllOrders">Show All Orders</button>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <br>
+            <th>ORDER_ID</th>
+        </tr>
+        <tr th:each="order : ${showallorders}">
+            <td th:text="${order.getName()}">NAME</td>
+            <td th:text="${order.getOrder_id()}">ORDER_ID</td>
+        </tr>
+    </table>
+</form>
+
+
+<form th:action="@{/operator/showOrderById}" method="post" th:object="${showorderbyid}">
+    <input type="number" name="id" placeholder="order_id" field="*{order_id}">
+    <button type="submit" name="showOrderById">Show Order By ID</button>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <br>
+        </tr>
+        <tr th:each="order : ${showorderbyid}">
+            <td th:text="${order.getName()}">NAME</td>
+        </tr>
+    </table>
+</form>
+
+
+<form th:action="@{/operator/showAllProducts}" method="post" th:object="${showallproducts}">
+    <button type="submit" name="showAllProducts">Show All Products</button>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <br>
+        </tr>
+        <tr th:each="product : ${showallproducts}">
+            <td th:text="${product.getName()}">NAME</td>
+        </tr>
+    </table>
+</form>
+
+<hr>
+<h1>action:</h1>
+<hr>
+<form th:action="@{/operator/addCustomer}" method="post" th:object="${addcustomer}">
+    <input type="text" name="name" placeholder="username" field="*{name}">
+    <input type="password" name="password" placeholder="password" field="*{password}">
+    <input type="email" name="email" placeholder="email" field="*{email}">
+    <input type="number" name="number" placeholder="number" field="*{number}">
+    <input type="text" name="orders" placeholder="order" field="*{orders}">
+    <input type="text" name="order_description" placeholder="order description" field="*{order_description}">
+    <button type="submit" name="addCustomer">Add customer</button>
+</form>
+
+</body>
+</html>

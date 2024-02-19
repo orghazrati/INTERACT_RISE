@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CUSTOMER-DASHBOARD</title>
+</head>
+<body>
+        <h1>WELCOME !</h1>
+      <form th:action="@{customerDashboard/changeOrder}" method="post" th:object="${changeorderbycustomer}">
+          <input type="text" name="orders" placeholder="enter your order: " field="*{orders}">
+          <input type="text" name="order_description" placeholder="enter description for your order: " field="*{order_description}">
+        <button type="submit" name="submit">SUBMIT</button>
+      </form>
+
+            <hr>
+        <form th:action="@{/customerDashboard/showOrder}" method="post" th:object="${customershoworder}">
+            <button type="submit" >Show Order</button>
+            <table>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESCRIPTION</th>
+                </tr>
+                <tr th:each="customer : ${customershoworder}">
+                    <td th:text="${customer.getOrders()}">NAME</td>
+                    <td th:text="${customer.getOrder_description()}">DESCRIPTION</td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>
