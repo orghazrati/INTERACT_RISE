@@ -14,8 +14,10 @@ the main features of this web application is:
 4-->ENCRYPT PASSWORDS';
   this web application actually save the passwords without saving them in DB ! it encrypt the passwords with a special method !
 ***********
-5-->WEB PLATFORM;
-  INTERACT_RISE designed for web platform and every devices can use that!
+5-->PERMISSION ACCESS;
+  INTERACT_RISE have 2 supporter : 
+1=OPERATOR: operators have limit access about data and customers and their accessibility only can change by admins!
+2=ADMIN: admins can control and manage everything and they can create a operator !
 ***********
 
 technologies:
