@@ -1,4 +1,4 @@
-' INTERACT_RISE ' is a CRM created by java in the WEB platform.
+' INTERACT_RISE ' is a CRM i created by java in the WEB platform.
 its my first project for my resume!
 the main features of this web application is:
 
